@@ -37,7 +37,7 @@ namespace Catalog.Application.DI
             return new ElasticsearchSinkOptions(new Uri(configuration["ELKConfiguration:Uri"]))
             {
                 AutoRegisterTemplate = true,
-                IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name.ToLower()}-{env.ToLower().Replace(".", ",")}-{DateTime.UtcNow:yyyy-MM}"
+                IndexFormat = $""
             };
         }
     }

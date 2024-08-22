@@ -86,7 +86,6 @@ namespace Basket.Infastructure.Services
                 if (!isProductExist)
                 {
                     throw new ServiceException(ServiceErrorType.NoEntity);
-                    ;
                 }
 
                 var product = _mapper.Map<Product>(productPutModel);

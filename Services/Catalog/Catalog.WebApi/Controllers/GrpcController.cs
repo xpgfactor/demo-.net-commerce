@@ -13,7 +13,7 @@ namespace Catalog.WebApi.Controllers
 
         public GrpcController()
         {
-            _channel = GrpcChannel.ForAddress("https://localhost:7168"); ;
+            _channel = GrpcChannel.ForAddress(""); ;
             _greeterClient = new Greeter.GreeterClient(_channel);
         }
 

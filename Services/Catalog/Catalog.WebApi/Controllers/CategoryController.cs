@@ -22,7 +22,7 @@ namespace Catalog.WebApi.Controllers
         public async Task<IActionResult> GetAllAsync([FromRoute] GetAllCategoryQuery request, CancellationToken cancellationToken)
         {
             var categories = await _mediator.Send(request, cancellationToken);
-            
+
             return Ok(categories);
         }
 
@@ -30,7 +30,7 @@ namespace Catalog.WebApi.Controllers
         public async Task<IActionResult> CreateAsync([FromBody] CreateCategoryCommand request, CancellationToken cancellationToken)
         {
             var createdCategoryId = await _mediator.Send(request, cancellationToken);
-            
+
             return Created(nameof(CategoryController), createdCategoryId);
         }
 
@@ -43,7 +43,7 @@ namespace Catalog.WebApi.Controllers
             }
 
             var updatedCategory = await _mediator.Send(request, cancellationToken);
-           
+
             return Ok(updatedCategory);
         }
 
@@ -56,10 +56,12 @@ namespace Catalog.WebApi.Controllers
             }
 
             var canDeleteCategory = await _mediator.Send(request, cancellationToken);
-           
+
             if (canDeleteCategory)
+            {
                 return NoContent();
-            
+            }
+
             return BadRequest();
         }
     }

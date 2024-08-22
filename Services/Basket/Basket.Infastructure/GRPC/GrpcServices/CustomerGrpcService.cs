@@ -16,22 +16,18 @@ namespace Basket.Infastructure.GRPC.GrpcServices
         public override async Task<ReplyModel> GetCustomers(Request request, ServerCallContext context)
         {
             var customers = await _repository.CustomerRepository.GetAllAsync(new CancellationToken());
-           
-            List<CustomerGrpc> customersGrpc = new List<CustomerGrpc>();
-            foreach (var item in customers)
+
+            List<CustomerGrpc> customersGrpc = customers.Select(x => new CustomerGrpc()
             {
-                customersGrpc.Add(new CustomerGrpc
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Surname = item.Surname,
-                    Adress = item.Address
-                });
-            }
-            
+                Id = x.Id,
+                Name = x.Name,
+                Surname = x.Surname,
+                Adress = x.Address
+            }).ToList();
+
             ReplyModel replyModel = new ReplyModel();
             replyModel.Customergrpc.AddRange(customersGrpc);
-            
+
             return replyModel;
         }
         public override async Task<ReplyPostModel> PostCustomer(PostRequest request, ServerCallContext context)
@@ -40,13 +36,13 @@ namespace Basket.Infastructure.GRPC.GrpcServices
             customer.Name = request.Name;
             customer.Surname = request.Surname;
             customer.Address = request.Adress;
-            
+
             var id = await _repository.CustomerRepository.CreateAsync(customer, new CancellationToken());
             await _repository.SaveAsync();
 
             ReplyPostModel replyModel = new ReplyPostModel();
             replyModel.Id = id;
-            
+
             return replyModel;
         }
     }

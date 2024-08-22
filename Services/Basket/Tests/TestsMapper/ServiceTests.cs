@@ -72,38 +72,6 @@ namespace TestsMapper
             result.Should().BeEquivalentTo(TestHelper.CreateBaseViewModel());
         }
 
-        //[Test]
-        //public async Task CustomerService_UpdateAsync_Shold_Be_Valid()
-        //{
-        //    var repositoryManager = serviceProvider.GetService<IRepositoryManager>();
-        //    var customerService = serviceProvider.GetService<ICustomerService>();
-        //    var baseEntity = TestHelper.CreateBaseCustomerEntity();
-        //    //await repositoryManager.CustomerRepository.CreateAsync(baseEntity,
-        //    //    new CancellationToken());
-        //    //await repositoryManager.SaveAsync(new CancellationToken());
-        //    var customerPostModel = new CustomerPostModel()
-        //    {
-        //        Address = "random Street",
-        //        Name = "Name",
-        //        Surname = "Surname"
-        //    };
-        //    var putModel = new CustomerPutModel()
-        //    {
-        //        Id = 1,
-        //        Address = "random Street",
-        //        Name = "changedName",
-        //        Surname = "Surname"
-        //    };
-        //    customerService.CreateAsync(customerPostModel, new CancellationToken()).Wait();
-        //    var result = await customerService.UpdateAsync(1, putModel, new CancellationToken());
-
-        //    var view = TestHelper.CreateBaseCustomerEntity();
-        //    view.Id = 1;
-        //    view.Name = "changedName";
-
-        //    view.Should().BeEquivalentTo(result);
-        //}
-
         [Test]
         public async Task CustomerService_DeleteAsync_Shold_Be_Valid()
         {
@@ -233,8 +201,7 @@ namespace TestsMapper
         public async Task OrderService_GetAllAsync_Shold_Be_Valid()
         {
             //Arrange
-            var repositoryManager = _serviceProvider.GetService<IRepositoryManager>()
-                ;
+            var repositoryManager = _serviceProvider.GetService<IRepositoryManager>();
             await repositoryManager.CustomerRepository.CreateAsync(TestHelper.CreateBaseCustomerEntity(),
                 new CancellationToken());
 

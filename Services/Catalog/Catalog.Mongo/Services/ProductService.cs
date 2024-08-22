@@ -9,7 +9,7 @@ namespace Catalog.Mongo.Services
         IMongoCollection<Product> Products;
         public ProductService()
         {
-            string connectionString = "mongodb://localhost:27017/store";
+            string connectionString = "";
             var connection = new MongoUrlBuilder(connectionString);
             MongoClient client = new MongoClient(connectionString);
             IMongoDatabase database = client.GetDatabase(connection.DatabaseName);

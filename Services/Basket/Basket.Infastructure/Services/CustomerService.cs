@@ -100,7 +100,6 @@ namespace Basket.Infastructure.Services
                 if (!isCustomerExist)
                 {
                     throw new ServiceException(ServiceErrorType.NoEntity);
-                    ;
                 }
 
                 var isCustomerDeleted = await _repository.CustomerRepository.DeleteAsync(customerId, cancellationToken);

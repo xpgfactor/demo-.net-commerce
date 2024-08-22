@@ -28,7 +28,6 @@ namespace Catalog.Application.Category.Commands.Delete
                 if (!isCategoryExist)
                 {
                     throw new ServiceException(ServiceErrorType.NoEntity);
-                    ;
                 }
 
                 var isCategoryDeleted = await _repository.CategoryRepository.DeleteAsync(request.Id, cancellationToken);

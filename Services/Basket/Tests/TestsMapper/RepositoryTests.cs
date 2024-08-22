@@ -55,7 +55,7 @@ namespace TestsMapper
             var items = await repositoryManager.CustomerRepository.GetAllAsync(new CancellationToken());
 
             //Assert
-            items.Count.Should().BeGreaterThanOrEqualTo(10);
+            items.Count.Should().Equals(10);
         }
 
         [Test]
@@ -167,7 +167,7 @@ namespace TestsMapper
             new CancellationToken());
 
             //Assert
-            items.Count.Should().BeGreaterThanOrEqualTo(10);
+            items.Count.Should().Equals(10);
         }
 
         [TearDown]

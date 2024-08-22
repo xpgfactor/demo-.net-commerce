@@ -19,7 +19,7 @@ namespace Basket.WebApi.Controllers
         public async Task<IActionResult> GetAllAsync(CancellationToken token)
         {
             var customers = await _customerService.GetAllAsync(token);
-            
+
             return Ok(customers);
         }
 
@@ -27,7 +27,7 @@ namespace Basket.WebApi.Controllers
         public async Task<IActionResult> CreateAsync(CustomerCreateModel customerPostModel, CancellationToken token)
         {
             var customerId = await _customerService.CreateAsync(customerPostModel, token);
-            
+
             return Created(nameof(CustomerController), customerId);
         }
 
@@ -35,7 +35,7 @@ namespace Basket.WebApi.Controllers
         public async Task<IActionResult> UpdateAsync(int id, CustomerUpdateModel customerPutModel, CancellationToken token)
         {
             var updatedCustomer = await _customerService.UpdateAsync(id, customerPutModel, token);
-            
+
             return Ok(updatedCustomer);
         }
 
@@ -43,9 +43,11 @@ namespace Basket.WebApi.Controllers
         public async Task<IActionResult> DeleteAsync(int id, CancellationToken token)
         {
             var canDeleteCustomer = await _customerService.DeleteAsync(id, token);
-            
+
             if (canDeleteCustomer)
+            {
                 return NoContent();
+            }
 
             return BadRequest();
         }

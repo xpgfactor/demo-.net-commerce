@@ -84,7 +84,6 @@ namespace Basket.Infastructure.Services
                 if (isOrderExist)
                 {
                     throw new ServiceException(ServiceErrorType.NoEntity);
-                    ;
                 }
 
                 var order = _mapper.Map<Order>(orderPutModel);
@@ -127,7 +126,6 @@ namespace Basket.Infastructure.Services
                 if (!isOrderExist)
                 {
                     throw new ServiceException(ServiceErrorType.NoEntity);
-                    ;
                 }
 
                 var isOrderDeleted = await _repository.OrderRepository.DeleteAsync(orderId, cancellationToken);
